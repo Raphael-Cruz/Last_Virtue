@@ -1,0 +1,60 @@
+[gd_scene format=3 uid="uid://cnjjivgbg132c"]
+
+[ext_resource type="Script" uid="uid://ctjbomq1ltdbk" path="res://Scripts/player_controller.gd" id="1_a3d8c"]
+[ext_resource type="SpriteFrames" path="res://Sprites/Player/Idle" id="2_xpcdj"]
+
+[sub_resource type="Animation" id="Animation_htcer"]
+resource_name = "Idle"
+length = 0.001
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Idle", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_dd0ac"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0u5uq"]
+_data = {
+&"Idle": SubResource("Animation_htcer"),
+&"RESET": SubResource("Animation_dd0ac")
+}
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a3d8c"]
+radius = 11.0
+height = 124.0
+
+[node name="Player" type="CharacterBody2D" unique_id=1609691188]
+script = ExtResource("1_a3d8c")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1426748226]
+offset = Vector2(0, -15)
+
+[node name="Animator" type="Node2D" parent="." unique_id=1987547981]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Animator" unique_id=1062633394]
+texture_filter = 1
+position = Vector2(1, -64)
+scale = Vector2(0.5, 0.5)
+sprite_frames = ExtResource("2_xpcdj")
+animation = &"Idle"
+autoplay = "Idle"
+frame = 24
+frame_progress = 0.4702984
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Animator" unique_id=2146577839]
+libraries/ = SubResource("AnimationLibrary_0u5uq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1336535360]
+position = Vector2(19, -63)
+shape = SubResource("CapsuleShape2D_a3d8c")

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c8ut1v721y7ud"
-path="res://.godot/imported/background1.png-f0fad7b63b527d48e63cce5acf85bcf8.ctex"
+uid="uid://dyrklug5ok44k"
+path="res://.godot/imported/double_jumping.png-9c0bc066ba601302dca38c218cf79526.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Animations/Caves/background1.png"
-dest_files=["res://.godot/imported/background1.png-f0fad7b63b527d48e63cce5acf85bcf8.ctex"]
+source_file="res://Sprites/Player/Double_Jump/double_jumping.png"
+dest_files=["res://.godot/imported/double_jumping.png-9c0bc066ba601302dca38c218cf79526.ctex"]
 
 [params]
 

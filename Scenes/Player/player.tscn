@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://cnjjivgbg132c"]
 
-[ext_resource type="Script" uid="uid://ctjbomq1ltdbk" path="res://Scripts/player_controller.gd" id="1_a3d8c"]
+[ext_resource type="Script" uid="uid://ctjbomq1ltdbk" path="res://Scripts/Player/player_controller.gd" id="1_a3d8c"]
 [ext_resource type="Texture2D" uid="uid://dd44biimpmhx1" path="res://Sprites/Player/Idle/frame_000.png" id="1_uvnfx"]
+[ext_resource type="Texture2D" uid="uid://d3fom2ebgv0iy" path="res://Sprites/Player/Climbing/climbing.png" id="2_8l7e3"]
+[ext_resource type="Texture2D" uid="uid://cjldhe3ysrnk5" path="res://Sprites/Player/Dash/Patientia_Dashing.png" id="2_oshob"]
+[ext_resource type="Texture2D" uid="uid://cujlu7wrirbi1" path="res://Sprites/Player/Falling/falling.png" id="3_4h47k"]
+[ext_resource type="Texture2D" uid="uid://dyrklug5ok44k" path="res://Sprites/Player/Double_Jump/double_jumping.png" id="3_f4of5"]
 [ext_resource type="Texture2D" uid="uid://dhvxkuqk6hphp" path="res://Sprites/Player/Idle/frame_001.png" id="3_gs43p"]
 [ext_resource type="Texture2D" uid="uid://basljnkeitcub" path="res://Sprites/Player/Idle/frame_002.png" id="4_oshob"]
 [ext_resource type="Texture2D" uid="uid://dn0hgfix3ogv7" path="res://Sprites/Player/Idle/frame_003.png" id="5_4h47k"]
@@ -40,6 +44,7 @@
 [ext_resource type="Texture2D" uid="uid://cvw86blepn1bb" path="res://Sprites/Player/Running/frame_000.png" id="38_56b0b"]
 [ext_resource type="Texture2D" uid="uid://pipoejaetalo" path="res://Sprites/Player/Running/frame_001.png" id="39_w6yxy"]
 [ext_resource type="Texture2D" uid="uid://tutulwv6u3i5" path="res://Sprites/Player/Running/frame_002.png" id="40_2crlr"]
+[ext_resource type="Texture2D" uid="uid://dmcrxpsb6qmrx" path="res://Sprites/Player/Jump/jumping.png" id="40_mcfd4"]
 [ext_resource type="Texture2D" uid="uid://b0r4tfi1d0yb6" path="res://Sprites/Player/Running/frame_003.png" id="41_xvldo"]
 [ext_resource type="Texture2D" uid="uid://o5nfb8uwpuhu" path="res://Sprites/Player/Running/frame_004.png" id="42_ujqdw"]
 [ext_resource type="Texture2D" uid="uid://cme1r2d25qjso" path="res://Sprites/Player/Running/frame_005.png" id="43_ddxso"]
@@ -74,13 +79,49 @@
 [ext_resource type="Texture2D" uid="uid://dhu3qryqsou4f" path="res://Sprites/Player/Running/frame_034.png" id="72_i1fur"]
 [ext_resource type="Texture2D" uid="uid://dfo24jl1mivb8" path="res://Sprites/Player/Running/frame_035.png" id="73_uqsid"]
 
-[sub_resource type="Curve" id="Curve_gs43p"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.4), -1.9848654, 0.0, 0, 0]
-point_count = 2
-metadata/_snap_enabled = true
-
 [sub_resource type="SpriteFrames" id="SpriteFrames_omi1v"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_8l7e3")
+}],
+"loop": false,
+"name": &"Climbing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_oshob")
+}],
+"loop": true,
+"name": &"Dashing",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_f4of5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f4of5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f4of5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("40_mcfd4")
+}],
+"loop": false,
+"name": &"Double_Jump",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_4h47k")
+}],
+"loop": true,
+"name": &"Falling",
+"speed": 20.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": ExtResource("1_uvnfx")
@@ -192,6 +233,14 @@ animations = [{
 }],
 "loop": true,
 "name": &"Idle",
+"speed": 20.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("40_mcfd4")
+}],
+"loop": true,
+"name": &"Jump",
 "speed": 20.0
 }, {
 "frames": [{
@@ -308,6 +357,75 @@ animations = [{
 "speed": 20.0
 }]
 
+[sub_resource type="Animation" id="Animation_hn678"]
+resource_name = "Climbing"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.13333334),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Climbing", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_4h47k"]
+resource_name = "Dashing"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Dashing", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_8l7e3"]
+resource_name = "Double_Jump"
+length = 0.001
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Double_Jump", 1.0, false],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_mcfd4"]
+resource_name = "Falling"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Falling", 1.0, false],
+"method": &"play"
+}]
+}
+
 [sub_resource type="Animation" id="Animation_gs43p"]
 resource_name = "Idle"
 tracks/0/type = "method"
@@ -321,6 +439,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1),
 "values": [{
 "args": [&"Idle"],
+"method": &"play"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_f4of5"]
+resource_name = "Jump"
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.033333335),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [&"Jump", 1.0, false],
 "method": &"play"
 }]
 }
@@ -344,18 +479,21 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_oshob"]
 _data = {
+&"Climbing": SubResource("Animation_hn678"),
+&"Dashing": SubResource("Animation_4h47k"),
+&"Double_Jump": SubResource("Animation_8l7e3"),
+&"Falling": SubResource("Animation_mcfd4"),
 &"Idle": SubResource("Animation_gs43p"),
+&"Jump": SubResource("Animation_f4of5"),
 &"Running": SubResource("Animation_oshob")
 }
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a3d8c"]
 radius = 11.0
-height = 124.0
+height = 140.0
 
 [node name="Player" type="CharacterBody2D" unique_id=1609691188]
 script = ExtResource("1_a3d8c")
-speed = 400.0
-dash_curve = SubResource("Curve_gs43p")
 
 [node name="Camera2D" type="Camera2D" parent="." unique_id=1426748226]
 offset = Vector2(0, -15)
@@ -369,17 +507,36 @@ drag_vertical_enabled = true
 [node name="Animator" type="Node2D" parent="." unique_id=1987547981]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Animator" unique_id=1981566914]
-position = Vector2(0, -61)
-scale = Vector2(0.5, 0.5)
+position = Vector2(-2, -72)
+scale = Vector2(0.6, 0.6)
 sprite_frames = SubResource("SpriteFrames_omi1v")
-animation = &"Idle"
+animation = &"Climbing"
 autoplay = "Idle"
-frame = 34
-frame_progress = 0.60130036
+frame_progress = 1.0
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Animator" unique_id=1906190463]
 libraries/ = SubResource("AnimationLibrary_oshob")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1336535360]
-position = Vector2(18, -64)
+unique_name_in_owner = true
+position = Vector2(21, -68)
 shape = SubResource("CapsuleShape2D_a3d8c")
+
+[node name="CoyoteTimer" type="Timer" parent="." unique_id=1355858645]
+unique_name_in_owner = true
+process_callback = 0
+wait_time = 0.2
+one_shot = true
+
+[node name="LedgeClimbRayCast" type="RayCast2D" parent="." unique_id=238976205]
+unique_name_in_owner = true
+position = Vector2(34, -104)
+target_position = Vector2(16, 48)
+
+[node name="LedgeSpaceRayCast" type="RayCast2D" parent="." unique_id=1753890083]
+unique_name_in_owner = true
+position = Vector2(-59, -2)
+target_position = Vector2(0, -146)
+
+[node name="DashCooldown" type="Timer" parent="." unique_id=1519840901]
+unique_name_in_owner = true

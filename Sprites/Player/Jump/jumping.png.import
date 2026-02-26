@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dfc17nwa6ay47"
-path="res://.godot/imported/background4b.png-57bdd0c0c673641967732ff169248d25.ctex"
+uid="uid://dmcrxpsb6qmrx"
+path="res://.godot/imported/jumping.png-d098d0d2b2bd3caed1e6722a9029f174.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Animations/Caves/background4b.png"
-dest_files=["res://.godot/imported/background4b.png-57bdd0c0c673641967732ff169248d25.ctex"]
+source_file="res://Sprites/Player/Jump/jumping.png"
+dest_files=["res://.godot/imported/jumping.png-d098d0d2b2bd3caed1e6722a9029f174.ctex"]
 
 [params]
 
